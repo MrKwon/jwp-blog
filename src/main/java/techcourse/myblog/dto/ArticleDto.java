@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 
 import techcourse.myblog.domain.Article;
 
-public class ArticleDto implements DtoUtils<Article> {
+public class ArticleDto {
     @NotBlank(message = "제목을 입력해주세요.")
     private String title;
 
@@ -45,8 +45,8 @@ public class ArticleDto implements DtoUtils<Article> {
         this.contents = contents;
     }
 
-    @Override
-    public Article toDomain() {
+
+    public Article toArticle() {
         return new Article(title, coverUrl, contents);
     }
 }

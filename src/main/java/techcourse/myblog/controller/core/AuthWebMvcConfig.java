@@ -1,4 +1,4 @@
-package techcourse.myblog.controller.config;
+package techcourse.myblog.controller.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,24 +7,23 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import techcourse.myblog.interceptor.UnauthenticatedInterceptor;
+import techcourse.myblog.interceptor.AuthInterceptor;
 
 @Configuration
-public class UnauthenticatedConfig implements WebMvcConfigurer {
+public class AuthWebMvcConfig implements WebMvcConfigurer {
 
-    @Qualifier(value = "unauthenticatedInterceptor")
+    @Qualifier(value = "authInterceptor")
     private HandlerInterceptor handlerInterceptor;
 
     @Autowired
-    public UnauthenticatedConfig(UnauthenticatedInterceptor unauthenticatedInterceptor) {
-        this.handlerInterceptor = unauthenticatedInterceptor;
+    public AuthWebMvcConfig(AuthInterceptor authInterceptor) {
+        this.handlerInterceptor = authInterceptor;
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(handlerInterceptor)
-                .addPathPatterns("/mypage/**")
-                .addPathPatterns("/articles/writing")
-                .addPathPatterns("/logout");
+                .addPathPatterns("/signup")
+                .addPathPatterns("/login");
     }
 }

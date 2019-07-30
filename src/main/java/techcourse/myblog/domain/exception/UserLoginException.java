@@ -1,7 +1,6 @@
-package techcourse.myblog.exception;
+package techcourse.myblog.domain.exception;
 
 public abstract class UserLoginException extends RuntimeException {
-
     public UserLoginException(String message) {
         super(message);
     }

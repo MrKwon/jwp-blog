@@ -1,4 +1,4 @@
-package techcourse.myblog.exception;
+package techcourse.myblog.domain.exception;
 
 public class UnFoundUserException extends UserLoginException {
 
